@@ -1,9 +1,6 @@
 # Build results
 /target
-
-# Text file backups
-**/*.rs.bk
-
+debug/
 # macOS
 .DS_Store
 
@@ -11,3 +8,13 @@
 *.iml
 .idea
 *.lock
+
+
+
+
+
+Cargo.lock
+
+**/*.rs.bk
+
+*.pdb
