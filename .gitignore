@@ -10,3 +10,4 @@
 # IDEs
 *.iml
 .idea
+*.lock
