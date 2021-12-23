@@ -1,5 +1,5 @@
 [package]
-name = "anchor-token"
+name = "xdefi-token"
 version = "0.2.0"
 authors = ["Terraform Labs, PTE."]
 edition = "2018"

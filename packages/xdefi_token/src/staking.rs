@@ -1,12 +1,12 @@
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
-use cosmwasm_std::{Decimal, Uint128};
+use cosmwasm_std::{CanonicalAddr, Decimal, Uint128};
 use cw20::Cw20ReceiveMsg;
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct InstantiateMsg {
-    pub anchor_token: String,
+    pub xdefi_token: String,
     pub staking_token: String, // lp token of ANC-UST pair contract
     pub distribution_schedule: Vec<(u64, u64, Uint128)>,
 }
@@ -24,6 +24,10 @@ pub enum ExecuteMsg {
     /// and send remaining tokens to the new contract
     MigrateStaking {
         new_staking_contract: String,
+    },
+
+    ChangeOwner {
+        new_owner_address: String,
     },
 }
 
@@ -53,7 +57,7 @@ pub enum QueryMsg {
 // We define a custom struct for each query response
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct ConfigResponse {
-    pub anchor_token: String,
+    pub xdefi_token: String,
     pub staking_token: String,
     pub distribution_schedule: Vec<(u64, u64, Uint128)>,
 }
@@ -64,6 +68,7 @@ pub struct StateResponse {
     pub last_distributed: u64,
     pub total_bond_amount: Uint128,
     pub global_reward_index: Decimal,
+    pub owner_address: CanonicalAddr,
 }
 
 // We define a custom struct for each query response
